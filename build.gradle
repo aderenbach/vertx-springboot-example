@@ -1,0 +1,74 @@
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext {
+    springVersion = '4.1.6.RELEASE'
+    springBootVersion = '1.2.3.RELEASE'
+    vertxVersion = '3.0.0'
+  
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
+
+
+buildscript {
+    repositories {
+        maven { url "https://repo.spring.io/libs-snapshot" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE")
+        
+    }
+}
+
+configurations.all {
+
+    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
+jar {
+    baseName = 'vertx-springboot-example'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "https://repo.spring.io/libs-snapshot" }
+}
+
+bootRun {
+
+}
+
+
+dependencies {
+
+    // Spring Boot
+    compile("org.springframework.boot:spring-boot-starter:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-log4j:$springBootVersion")
+
+    compile "io.vertx:vertx-core:$vertxVersion"
+    compile "io.vertx:vertx-web:$vertxVersion"
+
+    compile ("com.fasterxml.jackson.core:jackson-core:2.6.0-rc1")
+    compile ("com.fasterxml.jackson.core:jackson-databind:2.6.0-rc1")
+
+    // Spring Framework
+    compile "org.springframework:spring-core:$springVersion",
+            "org.springframework:spring-beans:$springVersion",
+            "org.springframework:spring-context:$springVersion",
+            "org.springframework:spring-context-support:$springVersion",
+            "org.springframework:spring-tx:$springVersion"
+
+ 
+}
+
