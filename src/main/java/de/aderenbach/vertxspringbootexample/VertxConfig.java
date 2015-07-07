@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class VertxConfig {
 
     @Bean
-    public Vertx createVertex() {
+    public Vertx createVertx() {
         Vertx vertx = Vertx.vertx();
         vertx.eventBus().registerDefaultCodec(User.class, new UserMessageCodec());
         return vertx;
