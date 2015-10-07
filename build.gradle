@@ -45,10 +45,6 @@ repositories {
     maven { url "https://repo.spring.io/libs-snapshot" }
 }
 
-bootRun {
-
-}
-
 
 dependencies {
 
@@ -69,6 +65,5 @@ dependencies {
             "org.springframework:spring-context-support:$springVersion",
             "org.springframework:spring-tx:$springVersion"
 
- 
 }
 

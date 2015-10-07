@@ -18,7 +18,7 @@ public class User2LoadVerticle extends AbstractVerticle implements Verticle {
 
     @Value("${user2.name}")
     private String username;
-
+    
     @Override
     public void start() throws Exception {
 
