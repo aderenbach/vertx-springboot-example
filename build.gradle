@@ -45,6 +45,9 @@ repositories {
     maven { url "https://repo.spring.io/libs-snapshot" }
 }
 
+bootRun {
+    systemProperty "spring.profiles.active", System.getProperty("spring.profiles.active")
+}
 
 dependencies {
 
